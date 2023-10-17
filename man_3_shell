@@ -36,10 +36,9 @@ Disply a simple example: "#cisfun$"
 .BR ./shell()
 
 .SH AUTHOR
-Mohamed kamal & Mohamed Mosa 
-
+Mohamed kamal & Mohamed Mosa
 .SH REPORTING BUGS
-Please report bugs to: 
+Please report bugs to:
 mmohammedabdelrady@gmail.com
 kmido9729@gmail.com
 .SH COPYRIGHT
