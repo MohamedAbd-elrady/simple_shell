@@ -100,7 +100,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * get_line - stores into malloced buffer the user's command into shell
+ * _getline - stores into malloced buffer the user's command into shell
  * @str: buffer
  * Return: number of characters read
  */
