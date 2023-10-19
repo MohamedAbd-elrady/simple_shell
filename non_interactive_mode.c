@@ -28,7 +28,7 @@ void remove_comment(char *input)
 		input[i] = '\0';
 	while (input[i] != '\0')
 	{
-		if (input[i] == '#' && input[i - 1] == ' ')
+		if (input[i] == '#')
 			break;
 		i++;
 	}
