@@ -56,15 +56,23 @@ int builtin_func(char **token, list_t *env, int num, char **command, char **en)
 	/* if user types "exit", free cmd tokens, and exit */
 	if (_strcmp(token[0], "exit") == 0)
 	{
-		i = __exit(token, env, num, command);
+		i = __exit(token, env, num, command, en);
 	}
 	/* if user types "env", print, free cmd tokens, and reprompt */
 	else if (_strcmp(token[0], "env") == 0)
 	{
-		for (j = 0; en[j] != NULL; j++)
+		free_double_ptr(token);
+		if (en != NULL)
 		{
-			write(1, en[j], _strlen(en[j]));
-			write(1, "\n", 1);
+			for (j = 0; en[j] != NULL; j++)
+		
+			{
+		
+				write(1, en[j], _strlen(en[j]));
+		
+				write(1, "\n", 1);
+	
+			}
 		}
 		/*_env(token, env);*/
 		i = 1;
