@@ -71,7 +71,7 @@ int _setenv(list_t **env, char **str)
 
 	if (str[1] == NULL || str[2] == NULL)
 	{
-		write(STDOUT_FILENO, "Too few arguments\n", 18);
+		/*write(STDOUT_FILENO, "Too few arguments\n", 18);*/
 		free_double_ptr(str);
 		return (-1);
 	}
