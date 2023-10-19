@@ -62,13 +62,13 @@ int builtin_func(char **token, list_t *env, int num, char **command, char **en)
 	else if (_strcmp(token[0], "env") == 0)
 	{
 		free_double_ptr(token);
-		if (environ != NULL)
+		if (en != NULL)
 		{
-			for (j = 0; environ[j] != NULL; j++)
+			for (j = 0; en[j] != NULL; j++)
 		
 			{
 		
-				write(1, environ[j], _strlen(environ[j]));
+				write(1, en[j], _strlen(en[j]));
 				write(1, "\n", 1);
 	
 			}
@@ -104,7 +104,7 @@ int builtin_func(char **token, list_t *env, int num, char **command, char **en)
  *
  * Return: 0 if success
  */
-int shell_prompt(char **en)
+int shell_prompt(char **en, char **enviro)
 {
 	list_t *env;
 
@@ -140,7 +140,7 @@ int shell_prompt(char **en)
 		tokens = _strtok(input, " ");
 		if (token != NULL)
 			free(token);
-		ExitState = builtin_func(tokens, env, command_line_num, NULL, en);
+		ExitState = builtin_func(tokens, env, command_line_num, NULL, enviro);
 		if (ExitState)
 			continue;
 		ExitState = _execve(tokens, env, command_line_num);

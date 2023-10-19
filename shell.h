@@ -13,7 +13,6 @@
 #include <dirent.h>
 #include <signal.h>
 
-extern char **environ;
 
 /**
  * struct list - linked list for environmental variables
@@ -28,7 +27,7 @@ typedef struct list
 } list_t;
 
 /* function prototypes */
-int shell_prompt(char **env);
+int shell_prompt(char **env, char **en);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 size_t _getline(char **str);
 int token_strlen(char *str, int pos, char delm);
