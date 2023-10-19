@@ -37,7 +37,7 @@ int _unsetenv(list_t **env, char **str)
 
 	if (str[1] == NULL)
 	{
-		write(STDOUT_FILENO, "Too few arguments\n", 18);
+		/*write(STDOUT_FILENO, "Too few arguments\n", 18);*/
 		free_double_ptr(str);
 		return (-1);
 	}
@@ -45,7 +45,7 @@ int _unsetenv(list_t **env, char **str)
 	free_double_ptr(str);
 	if (index == -1)
 	{
-		write(STDOUT_FILENO, "Cannot find\n", 12);
+		/*write(STDOUT_FILENO, "Cannot find\n", 12);*/
 		return (-1);
 	}
 	j = delete_nodeint_at_index(env, index);
