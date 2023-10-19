@@ -120,9 +120,7 @@ $ exit
 - [ ] handle `$$`, `$?`
 - [ ] handle `#`
 - [ ] file as input
-fix 1
-fix 2
-fix 3
+
 ---
 ### Authors
 - Mohamed Abd-elrady [Linkedin](https://www.linkedin.com/in/mohamed-abd-elrady-mosa/)
