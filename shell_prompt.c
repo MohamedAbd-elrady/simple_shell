@@ -106,13 +106,13 @@ int shell_prompt(char **en)
 			write(STDOUT_FILENO, "$ ", 2);
 		else
 			non_interactive_mode(env);
-
 		signal(SIGINT, ctrl_c_handle);
-		input = NULL;
-		input_size = 0;
+		input = NULL, input_size = 0;
 		input_size = _getline(&input);
 		ctrl_d_handle(input_size, input, env);
 		token = input;
+		remove_comment(input);
+		semi_colon(input);
 		input = space_ignore(input);
 		n = 0;
 		while (input[n] != '\n')

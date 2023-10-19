@@ -59,6 +59,7 @@ void not_found(char *str, int num, list_t *env);
 void cant_cd_to(char *str, int c_n, list_t *env);
 void illegal_number(char *str, int c_n, list_t *env);
 char *int_to_string(int num);
-
+void remove_comment(char *input);
+void semi_colon(char *input);
 
 #endif

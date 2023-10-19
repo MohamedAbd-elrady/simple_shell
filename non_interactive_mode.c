@@ -15,6 +15,48 @@ char *custom_ignore(char *str)
 }
 
 /**
+ * remove_comment - removes/ignores everything after a '#' char
+ * @input: input to be used
+ *
+ * Return: void
+ */
+void remove_comment(char *input)
+{
+	int i = 0;
+
+	if (input[i] == '#')
+		input[i] = '\0';
+	while (input[i] != '\0')
+	{
+		if (input[i] == '#' && input[i - 1] == ' ')
+			break;
+		i++;
+	}
+	input[i] = '\0';
+}
+
+/**
+ * semi_colon - replace ';' char with '\n' to be tokenized
+ * @input: input to be used
+ *
+ * Return: nothing
+ */
+void semi_colon(char *input)
+{
+	int i = 0;
+
+	if (input[i] == ';')
+		input[i] = '\n';
+	while (input[i] != '\0')
+	{
+		if (input[i] == ';')
+			input[i] = '\n';
+		i++;
+	}
+	input[i] = '\0';
+}
+
+/**
  * non_interactive_mode - when user pipes commands into shell via pipeline
  *
  * @env: envrionmental variables
@@ -32,6 +74,8 @@ void non_interactive_mode(list_t *env)
 		exit(0);
 	}
 	token = input;
+	remove_comment(input);
+	semi_colon(input);
 	input = custom_ignore(input);
 	n_line = _strtok(input, "\n"); /* tokenize each command string */
 	if (token != NULL)
@@ -51,7 +95,8 @@ void non_interactive_mode(list_t *env)
 		ExitState = _execve(tokens, env, command_line_num);
 		n++;
 	}
-	free_double_ptr(n_line);
+	/*if (n_line != NULL)*/
+		free_double_ptr(n_line);
 	free_linkedlist(env);
 	if (ExitState == -11)
 		ExitState = 0;
