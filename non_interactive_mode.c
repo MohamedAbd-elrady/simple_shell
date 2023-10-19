@@ -53,5 +53,7 @@ void non_interactive_mode(list_t *env)
 	}
 	free_double_ptr(n_line);
 	free_linkedlist(env);
+	if (ExitState == -11)
+		ExitState = 0;
 	exit(ExitState);
 }
