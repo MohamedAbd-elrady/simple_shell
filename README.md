@@ -118,8 +118,10 @@ $ exit
 - [ ] handle `&&`, `||`
 - [ ] implement `alias`
 - [ ] handle `$$`, `$?`
-- [ ] handle `#`
+- [x] handle `#`
 - [ ] file as input
+
+<br>
 
 ---
 ### Authors
