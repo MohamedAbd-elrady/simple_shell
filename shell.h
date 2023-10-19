@@ -27,7 +27,7 @@ typedef struct list
 } list_t;
 
 /* function prototypes */
-int shell_prompt(char **env);
+int shell_prompt(char **env, char **en);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 size_t _getline(char **str);
 int token_strlen(char *str, int pos, char delm);
@@ -39,10 +39,11 @@ char *_strdup(char *str);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 int _cd(char **str, list_t *env, int num);
-int builtin_func(char **token, list_t *env, int num, char **command);
-void non_interactive_mode(list_t *env);
+int builtin_func(char **token, list_t *env, int num, char **command,
+		char **en);
+void non_interactive_mode(list_t *env, char **en);
 char *_which(char *str, list_t *env);
-int __exit(char **s, list_t *env, int num, char **command);
+int __exit(char **s, list_t *env, int num, char **command, char **en);
 int _execve(char *argv[], list_t *env, int num);
 void free_double_ptr(char **str);
 void free_linkedlist(list_t *list);
@@ -59,6 +60,7 @@ void not_found(char *str, int num, list_t *env);
 void cant_cd_to(char *str, int c_n, list_t *env);
 void illegal_number(char *str, int c_n, list_t *env);
 char *int_to_string(int num);
+int _strlen(char *s);
 
 
 #endif

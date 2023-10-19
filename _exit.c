@@ -27,9 +27,10 @@ int custom_atoi(char *s)
  * @env: bring in environmental variable to free at error
  * @num: bring in nth user command line input to print in error message
  * @command: bring in command to free
+ * @en: enviro
  * Return: 0 if success 2 if fail
  */
-int __exit(char **str, list_t *env, int num, char **command)
+int __exit(char **str, list_t *env, int num, char **command, char **en)
 {
 	int exit_value = 0;
 
@@ -46,5 +47,7 @@ int __exit(char **str, list_t *env, int num, char **command)
 	free_linkedlist(env);
 	if (command != NULL)
 		free_double_ptr(command);
+	if (command != NULL)
+		free_double_ptr(en);
 	exit(exit_value);
 }

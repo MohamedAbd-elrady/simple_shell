@@ -12,10 +12,13 @@
 
 int main(int ac, char **av, char **env)
 {
+	char **en = __environ;
+
+
 	(void)ac;
 	(void)av;
 
-	shell_prompt(env);
+	shell_prompt(env, en);
 
 	return (0);
 }
