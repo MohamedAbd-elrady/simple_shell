@@ -51,7 +51,7 @@ int _unsetenv(list_t **env, char **str)
 	j = delete_nodeint_at_index(env, index);
 	if (j == -1)
 	{
-		write(STDOUT_FILENO, "Cannot find\n", 12);
+		/*write(STDOUT_FILENO, "Cannot find\n", 12);*/
 		return (-1);
 	}
 	return (0);
