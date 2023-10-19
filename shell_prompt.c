@@ -62,14 +62,13 @@ int builtin_func(char **token, list_t *env, int num, char **command, char **en)
 	else if (_strcmp(token[0], "env") == 0)
 	{
 		free_double_ptr(token);
-		if (en != NULL)
+		if (environ != NULL)
 		{
-			for (j = 0; en[j] != NULL; j++)
+			for (j = 0; environ[j] != NULL; j++)
 		
 			{
 		
-				write(1, en[j], _strlen(en[j]));
-		
+				write(1, environ[j], _strlen(environ[j]));
 				write(1, "\n", 1);
 	
 			}

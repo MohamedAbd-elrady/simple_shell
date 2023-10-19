@@ -13,6 +13,7 @@
 #include <dirent.h>
 #include <signal.h>
 
+extern char **environ;
 
 /**
  * struct list - linked list for environmental variables
