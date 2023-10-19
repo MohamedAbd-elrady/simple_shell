@@ -46,34 +46,21 @@ char *space_ignore(char *str)
  * @env: environmental variable
  * @num: take in nth user command to write error message
  * @command: command to free
- * @en: enviro
  * Return: 1 if builtin, 0 if not
  */
-int builtin_func(char **token, list_t *env, int num, char **command, char **en)
+int builtin_func(char **token, list_t *env, int num, char **command)
 {
-	int i = 0, j;
+	int i = 0;
 
 	/* if user types "exit", free cmd tokens, and exit */
 	if (_strcmp(token[0], "exit") == 0)
 	{
-		i = __exit(token, env, num, command, en);
+		i = __exit(token, env, num, command);
 	}
 	/* if user types "env", print, free cmd tokens, and reprompt */
 	else if (_strcmp(token[0], "env") == 0)
 	{
-		free_double_ptr(token);
-		if (en != NULL)
-		{
-			for (j = 0; en[j] != NULL; j++)
-		
-			{
-		
-				write(1, en[j], _strlen(en[j]));
-				write(1, "\n", 1);
-	
-			}
-		}
-		/*_env(token, env);*/
+		_env(token, env);
 		i = 1;
 	}
 	/* if user types "cd" , it will change directory */
@@ -104,7 +91,7 @@ int builtin_func(char **token, list_t *env, int num, char **command, char **en)
  *
  * Return: 0 if success
  */
-int shell_prompt(char **en, char **enviro)
+int shell_prompt(char **en)
 {
 	list_t *env;
 
@@ -118,7 +105,7 @@ int shell_prompt(char **en, char **enviro)
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 		else
-			non_interactive_mode(env, en);
+			non_interactive_mode(env);
 
 		signal(SIGINT, ctrl_c_handle);
 		input = NULL;
@@ -140,7 +127,7 @@ int shell_prompt(char **en, char **enviro)
 		tokens = _strtok(input, " ");
 		if (token != NULL)
 			free(token);
-		ExitState = builtin_func(tokens, env, command_line_num, NULL, enviro);
+		ExitState = builtin_func(tokens, env, command_line_num, NULL);
 		if (ExitState)
 			continue;
 		ExitState = _execve(tokens, env, command_line_num);

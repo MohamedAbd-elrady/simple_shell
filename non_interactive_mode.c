@@ -18,9 +18,8 @@ char *custom_ignore(char *str)
  * non_interactive_mode - when user pipes commands into shell via pipeline
  *
  * @env: envrionmental variables
- * @en: enviro
  */
-void non_interactive_mode(list_t *env, char **en)
+void non_interactive_mode(list_t *env)
 {
 	size_t input_size = 0, n = 0;
 	int command_line_num = 0, ExitState = 0;
@@ -43,7 +42,7 @@ void non_interactive_mode(list_t *env, char **en)
 		command_line_num++;
 		tokens = NULL;
 		tokens = _strtok(n_line[n], " ");
-		ExitState = builtin_func(tokens, env, command_line_num, n_line, en);
+		ExitState = builtin_func(tokens, env, command_line_num, n_line);
 		if (ExitState)
 		{
 			n++;
